@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy13sral6kuxw"]
+
+[ext_resource type="Texture2D" uid="uid://dnqesgltgnlry" path="res://ball/ball.png" id="1_3revv"]
+[ext_resource type="Script" path="res://ball/ball.gd" id="1_pqkya"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lst5j"]
+radius = 9.0
+
+[node name="Ball" type="RigidBody2D"]
+collision_mask = 3
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_pqkya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lst5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3revv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

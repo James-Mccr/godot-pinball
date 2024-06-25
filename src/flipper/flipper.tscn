@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://l28fqbitiwgf"]
+
+[ext_resource type="Script" path="res://flipper/flipper.gd" id="1_lpsat"]
+[ext_resource type="Texture2D" uid="uid://4le3hsa4hxsm" path="res://flipper/flipper.png" id="2_hguiy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_utvub"]
+bounce = 0.1
+
+[node name="Flipper" type="RigidBody2D"]
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_utvub")
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_lpsat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_hguiy")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(48, 20)
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(12, 6, -11, 6, -12, -1, -12, -6, -6, -5, 12, 3)

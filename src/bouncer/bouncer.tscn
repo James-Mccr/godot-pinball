@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx1xhcc3clals"]
+
+[ext_resource type="Texture2D" uid="uid://02j2ob7vse87" path="res://bouncer/bouncer-hit.png" id="1_8y6wu"]
+[ext_resource type="Texture2D" uid="uid://bctc47sfqwds5" path="res://bouncer/bouncer.png" id="1_abk65"]
+[ext_resource type="Script" path="res://bouncer/bouncer.gd" id="1_b4rd7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gjoo0"]
+bounce = 2.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vtkh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8y6wu")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_abk65")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkkor"]
+radius = 16.0
+
+[node name="Bouncer" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_gjoo0")
+script = ExtResource("1_b4rd7")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6vtkh")
+animation = &"idle"
+frame_progress = 0.575143
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hkkor")

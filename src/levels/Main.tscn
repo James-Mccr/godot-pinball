@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4k8evlnoet6s"]
+
+[ext_resource type="Texture2D" uid="uid://c82xr7m4xpuof" path="res://assets/background.png" id="1_j4yvm"]
+[ext_resource type="PackedScene" uid="uid://cy13sral6kuxw" path="res://ball/ball.tscn" id="2_5vcq6"]
+[ext_resource type="PackedScene" uid="uid://l28fqbitiwgf" path="res://flipper/flipper.tscn" id="3_1kmf3"]
+[ext_resource type="PackedScene" uid="uid://bfmh5kxdwdjqq" path="res://wall/wall.tscn" id="4_6h2yn"]
+[ext_resource type="PackedScene" uid="uid://bx1xhcc3clals" path="res://bouncer/bouncer.tscn" id="5_8gaba"]
+
+[sub_resource type="GDScript" id="GDScript_cewra"]
+
+[node name="Main" type="Node"]
+script = SubResource("GDScript_cewra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j4yvm")
+centered = false
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 160.0
+offset_right = 480.0
+offset_bottom = 360.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(320, 360)
+render_target_update_mode = 4
+
+[node name="Ball" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_5vcq6")]
+
+[node name="Flipper" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_1kmf3")]
+position = Vector2(0, 250)
+
+[node name="Flipper2" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_1kmf3")]
+position = Vector2(320, 250)
+scale = Vector2(-1, 1)
+clockwise = 1
+
+[node name="Wall" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_6h2yn")]
+position = Vector2(-20, 0)
+
+[node name="Wall2" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_6h2yn")]
+position = Vector2(-20, 100)
+
+[node name="Wall3" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_6h2yn")]
+position = Vector2(-20, 200)
+
+[node name="Wall4" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_6h2yn")]
+position = Vector2(320, 200)
+
+[node name="Wall5" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_6h2yn")]
+position = Vector2(320, 100)
+
+[node name="Wall6" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_6h2yn")]
+position = Vector2(320, 0)
+
+[node name="Bouncer" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_8gaba")]
+position = Vector2(160, 100)
+
+[node name="Bouncer2" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_8gaba")]
+position = Vector2(50, 150)
+
+[node name="Bouncer3" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_8gaba")]
+position = Vector2(270, 150)
